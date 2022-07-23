@@ -1,18 +1,18 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import LayersIcon from '@mui/icons-material/Layers';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Stack } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -33,19 +33,51 @@ const Sidebar = () => {
                 anchor="left"
             >
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Home'} />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <SearchIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Search'} />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <LayersIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Your library'} />
+                        </ListItemButton>
+                    </ListItem>
+                    <Stack mt={'30px'}>
+                        <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    <PlaylistAddIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={'Create Playlist'} />
                             </ListItemButton>
                         </ListItem>
-                    ))}
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <FavoriteIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={'Liked Songs'} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Stack>
                 </List>
                 <Divider />
-                <List>
+                {/* <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
                         <ListItem key={text} disablePadding>
                             <ListItemButton>
@@ -56,7 +88,7 @@ const Sidebar = () => {
                             </ListItemButton>
                         </ListItem>
                     ))}
-                </List>
+                </List> */}
             </Drawer>
         </>
     );
