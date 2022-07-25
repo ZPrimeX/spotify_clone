@@ -31,11 +31,11 @@ const PlaylistHorizontalCard = ({ img, title, isActive }) => {
             >
                 <Box display={'flex'} alignItems='center' gap={'15px'} height={'100%'}>
                     <Avatar
-                        src="https://images.unsplash.com/photo-1658660854207-8886b1d69bb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
+                        src={img}
                         variant="rounded"
                         sx={{ width: 80, height: '100%' }}
                     />
-                    <Typography color='white'>Title</Typography>
+                    <Typography color='white'>{title}</Typography>
                 </Box>
                 <IconButton sx={{ display: showBtn ? "block" : "none" }}><PlayCircleFilledIcon color="primary" sx={{ fontSize: 50 }} /></IconButton>
             </Box >
