@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Link,
     Box,
@@ -9,6 +9,7 @@ import {
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 
 const PlaylistHorizontalCard = ({ img, title, isActive }) => {
+    const [showBtn, setShowBtn] = useState(false)
     return (
         <Link href="#" underline="none">
             <Box
@@ -24,7 +25,10 @@ const PlaylistHorizontalCard = ({ img, title, isActive }) => {
                         backgroundColor: 'light-grey',
                         opacity: [0.9, 0.8, 0.7],
                     }
-                }}>
+                }}
+                onMouseOver={() => setShowBtn(true)}
+                onMouseLeave={() => setShowBtn(false)}
+            >
                 <Box display={'flex'} alignItems='center' gap={'15px'} height={'100%'}>
                     <Avatar
                         src="https://images.unsplash.com/photo-1658660854207-8886b1d69bb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
@@ -33,7 +37,7 @@ const PlaylistHorizontalCard = ({ img, title, isActive }) => {
                     />
                     <Typography color='white'>Title</Typography>
                 </Box>
-                <IconButton><PlayCircleFilledIcon color="primary" sx={{ fontSize: 50 }} /></IconButton>
+                <IconButton sx={{ display: showBtn ? "block" : "none" }}><PlayCircleFilledIcon color="primary" sx={{ fontSize: 50 }} /></IconButton>
             </Box >
         </Link>
     )

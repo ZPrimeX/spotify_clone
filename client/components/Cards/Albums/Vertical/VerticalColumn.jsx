@@ -16,28 +16,25 @@ const VerticalColumn = () => {
                 <Link fontSize={13} href="#" underline="hover" color="#B3B3B3" sx={{ mt: 6, mr: 7 }}>SEE ALL</Link>
             </Box>
             <Grid container rowSpacing={3} mt={'1px'}>
-                <Grid item xs={6} md={1.5}>
+                <Grid item xs={12} md={4} lg={1.5}>
                     <PlaylistVerticalCard />
                 </Grid>
-                <Grid item xs={6} md={1.5}>
+                <Grid item xs={12} md={4} lg={1.5}>
                     <PlaylistVerticalCard />
                 </Grid>
-                <Grid item xs={6} md={1.5}>
+                <Grid item xs={12} md={4} lg={1.5}>
+                    <PlaylistVerticalCard />
+                </Grid><Grid item xs={12} md={4} lg={1.5}>
+                    <PlaylistVerticalCard />
+                </Grid><Grid item xs={12} md={4} lg={1.5}>
+                    <PlaylistVerticalCard />
+                </Grid><Grid item xs={12} md={4} lg={1.5}>
                     <PlaylistVerticalCard />
                 </Grid>
-                <Grid item xs={6} md={1.5}>
+                <Grid item xs={12} md={4} lg={1.5}>
                     <PlaylistVerticalCard />
                 </Grid>
-                <Grid item xs={6} md={1.5}>
-                    <PlaylistVerticalCard />
-                </Grid>
-                <Grid item xs={6} md={1.5}>
-                    <PlaylistVerticalCard />
-                </Grid>
-                <Grid item xs={6} md={1.5}>
-                    <PlaylistVerticalCard />
-                </Grid>
-                <Grid item xs={6} md={1.5}>
+                <Grid item xs={12} md={4} lg={1.5}>
                     <PlaylistVerticalCard />
                 </Grid>
             </Grid>
