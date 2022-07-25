@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Box, IconButton, Popover, Button, Avatar, ListItemText, ListItemButton, Typography } from '@mui/material';
+import { Box, IconButton, Popover, Avatar, ListItemText, ListItemButton, Typography } from '@mui/material';
 
 
 const Topbar = () => {
@@ -25,18 +25,21 @@ const Topbar = () => {
                     <IconButton><ArrowBackIosNewIcon /></IconButton>
                     <IconButton><ArrowForwardIosIcon /></IconButton>
                 </Box>
-                <Button aria-describedby={id} variant="contained" onClick={handleClick} style={{
-                    borderRadius: 30, minWidth: 165, height: 25,
-                    backgroundColor: '#000000',
+                <Box aria-describedby={id} variant="contained" onClick={handleClick} sx={{
+                    borderRadius: 30,
+                    minWidth: 165,
+                    height: 30,
+                    backgroundColor: '#181818',
+                    cursor: 'pointer'
                 }} >
                     <Box display={'flex'} alignItems={'center'}>
                         <Avatar
-                            sx={{ width: 24, height: 24 }}
+                            sx={{ width: 27, height: 27, ml: 0.4, mt: 0.2 }}
                             alt="Avatar"
                             src="https://images.unsplash.com/photo-1658660854207-8886b1d69bb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" />
                         <Typography ml={1} color='white'>Username</Typography>
                     </Box>
-                </Button>
+                </Box>
                 <Popover
                     id={id}
                     open={open}
