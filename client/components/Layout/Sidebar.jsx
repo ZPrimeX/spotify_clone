@@ -14,7 +14,7 @@ import LayersIcon from '@mui/icons-material/Layers';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Stack } from '@mui/material';
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const Sidebar = () => {
     return (
