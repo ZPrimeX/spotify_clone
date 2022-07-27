@@ -17,6 +17,7 @@ model Playlist {
   name        String
   img         String
   description String
+  tags        String[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
