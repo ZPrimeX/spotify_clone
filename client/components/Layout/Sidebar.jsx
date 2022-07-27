@@ -12,7 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import LayersIcon from '@mui/icons-material/Layers';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Stack } from '@mui/material';
+import { Link, Stack } from '@mui/material';
 
 const drawerWidth = 210;
 
@@ -33,22 +33,27 @@ const Sidebar = () => {
                 anchor="left"
             >
                 <List>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Home'} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <SearchIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Search'} />
-                        </ListItemButton>
-                    </ListItem>
+                    <Link href='/' underline='none' color={'white'}>
+                        <ListItem disablePadding>
+
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <HomeIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={'Home'} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                    <Link href='/search' underline='none' color={'white'}>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <SearchIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={'Search'} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>

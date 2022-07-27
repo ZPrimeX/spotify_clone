@@ -1,4 +1,3 @@
-import { Button } from '@mui/material'
 import Head from 'next/head'
 import HomeContainer from '../client/containers/Home/HomeContainer'
 import Layout from '../client/components/Layout/Layout'

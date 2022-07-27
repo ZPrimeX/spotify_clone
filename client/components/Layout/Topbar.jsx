@@ -21,9 +21,12 @@ const Topbar = () => {
     return (
         <>
             <Box display={'flex'} justifyContent='space-between'>
-                <Box>
+                <Box display='flex' alignItems={'center'}>
                     <IconButton><ArrowBackIosNewIcon /></IconButton>
                     <IconButton><ArrowForwardIosIcon /></IconButton>
+                    <Box ml={2}>
+                        <input></input>
+                    </Box>
                 </Box>
                 <Box aria-describedby={id} variant="contained" onClick={handleClick} sx={{
                     borderRadius: 30,
