@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
                 <Sidebar />
                 <Box component="main"
                     sx={{
-                        flexGrow: 1, p: 3, height: '100vh', background:
+                        flexGrow: 1, height: '100vh', background:
                             "linear-gradient(0deg, rgba(18,18,18,1) 0%, rgba(18,18,18,1) 0%, rgba(24,24,24,1) 53%, rgba(14,57,65,1) 100%)",
                     }}
                 >{children}<Player /></Box>

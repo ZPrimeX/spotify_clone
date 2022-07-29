@@ -18,6 +18,8 @@ const HomeContainer = () => {
     useEffect(() => {
         fetchPlaylists()
     }, [])
+
+
     return (
         <>
             <Topbar />

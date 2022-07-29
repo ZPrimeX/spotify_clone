@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Box, IconButton, Popover, Avatar, ListItemText, ListItemButton, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
 
 const Topbar = () => {
+    const router = useRouter()
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -20,13 +22,13 @@ const Topbar = () => {
 
     return (
         <>
-            <Box display={'flex'} justifyContent='space-between'>
+            <Box display={'flex'} justifyContent='space-between' pt={2}>
                 <Box display='flex' alignItems={'center'}>
                     <IconButton><ArrowBackIosNewIcon /></IconButton>
                     <IconButton><ArrowForwardIosIcon /></IconButton>
-                    <Box ml={2}>
+                    {router.pathname === '/search' ? <Box ml={2}>
                         <input></input>
-                    </Box>
+                    </Box> : ""}
                 </Box>
                 <Box aria-describedby={id} variant="contained" onClick={handleClick} sx={{
                     borderRadius: 30,
@@ -60,6 +62,9 @@ const Topbar = () => {
                 >
                     <ListItemButton component="a" href="#" sx={{ width: 190 }}>
                         <ListItemText primary="Account" />
+                    </ListItemButton>
+                    <ListItemButton component="a" href="/profile">
+                        <ListItemText primary="Profile" />
                     </ListItemButton>
                     <ListItemButton component="a" href="#">
                         <ListItemText primary="Log out" />

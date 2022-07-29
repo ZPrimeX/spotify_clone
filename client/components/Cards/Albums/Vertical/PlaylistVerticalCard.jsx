@@ -13,7 +13,7 @@ import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 const PlaylistVerticalCard = ({ img, title, isActive }) => {
     const [showBtn, setShowBtn] = useState(false)
     return (
-        <Link href="#" underline="none">
+        <Link href="/playlist" underline="none">
             <Card sx={{ width: 190, maxHeight: 275 }}
                 onMouseOver={() => setShowBtn(true)}
                 onMouseLeave={() => setShowBtn(false)}>
