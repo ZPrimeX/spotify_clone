@@ -10,14 +10,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// playlist
+// user
+model User {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  username    String     @unique
+  email       String     @unique
+  first_name  String
+  password    String
+  second_name String
+  is_staff    Boolean    @default(false)
+  date_birth  String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  Playlist    Playlist[]
 
+  @@unique([id, username])
+}
+
+// playlist
 model Playlist {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  img         String
+  img         String?
   description String
   tags        String[]
+  owner       User     @relation(fields: [owner_id, owner_name], references: [id, username])
+  owner_name  String
+  owner_id    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

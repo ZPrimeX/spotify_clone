@@ -12,7 +12,7 @@ const HorizontalColumn = ({ data }) => {
                 Good Evening
             </Typography>
             <Grid container spacing={3} mt={'1px'}>
-                {data.map((d) => (<Grid item xs={6} md={4} key={d._id}>
+                {data.map((d) => (<Grid item xs={6} md={4} key={d.id}>
                     <PlaylistHorizontalCard img={d.img} title={d.name} />
                 </Grid>))}
             </Grid>
