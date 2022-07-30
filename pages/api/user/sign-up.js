@@ -10,11 +10,14 @@ export default async function handler(req, res) {
     if (!req.body.username) {
         res.status(400).json({ message: 'no username' })
     }
-    if (!req.body.username) {
+    if (!req.body.email) {
         res.status(400).json({ message: 'no email' })
     }
-    if (!req.body.username) {
+    if (!req.body.password) {
         res.status(400).json({ message: 'no password' })
+    }
+    if (!req.body.password.length < 6) {
+        res.status(400).json({ message: 'password must be at least 6 characters long!' })
     }
     const result = await signUp(req.body)
     if (result.id) {
