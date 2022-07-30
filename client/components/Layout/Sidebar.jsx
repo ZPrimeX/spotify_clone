@@ -63,14 +63,16 @@ const Sidebar = () => {
                         </ListItemButton>
                     </ListItem>
                     <Stack mt={'30px'}>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <PlaylistAddIcon />
-                                </ListItemIcon>
-                                <ListItemText primary={'Create Playlist'} />
-                            </ListItemButton>
-                        </ListItem>
+                        <Link href='/create_playlist' underline='none' color={'white'}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <PlaylistAddIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary={'Create Playlist'} />
+                                </ListItemButton>
+                            </ListItem>
+                        </Link>
                         <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
