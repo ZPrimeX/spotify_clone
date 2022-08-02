@@ -48,43 +48,12 @@ export const login = async (data) => {
 
     // send back user data with token
     return {
-        var
+        body: {
+            ...user,
+            password: null,
+            token
+        },
+        message: 'success'
 
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        ...user,
-        password: null,
-        token
     }
 }
