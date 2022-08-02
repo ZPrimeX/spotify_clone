@@ -10,7 +10,7 @@ export const apiHandler = (handler) => {
             // route handling
             await handler(req, res)
         } catch (error) {
-            errorHandler(err, res)
+            errorHandler(error, res)
         }
     }
 }
