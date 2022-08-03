@@ -20,7 +20,7 @@ async function handler(req, res) {
     if (!req.body.password) {
         res.status(400).json({ message: 'no password' })
     }
-    if (!req.body.password.length < 6) {
+    if (req.body.password.length < 6) {
         res.status(400).json({ message: 'password must be at least 6 characters long!' })
     }
     const result = await signUp(req.body)

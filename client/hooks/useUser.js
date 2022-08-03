@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 
@@ -6,15 +6,56 @@ export const useUser = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isAuth, setIsAuth] = useState(false)
+    const [status, setStatus] = useState('idle')
+    const [user, setUser] = useState()
+    const [token, setToken] = useState("")
+
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('user')))
+        setToken(localStorage.getItem('token') || undefined)
+    }, [])
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-        const res = await axios.post("/api/user/sign-up", { username, email, password });
+        try {
+            setStatus('loading')
+            const res = await axios.post("/api/user/sign-up", { username, email, password });
+
+            if (res.data.message === 'success') {
+                setUser(res.data.body)
+                localStorage.setItem('user', JSON.stringify(res.data.body))
+                localStorage.setItem('token', res.data.body.token)
+                setIsAuth(true)
+                setStatus('success')
+                setToken(res.data.body.token)
+            }
+
+        } catch (error) {
+            setIsAuth(false)
+            setStatus('error')
+        }
     };
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const res = await axios.post("/api/user/login", { email, password });
+        try {
+            setStatus('loading')
+            const res = await axios.post("/api/user/login", { email, password });
+
+            if (res.data.message === 'success') {
+                setUser(res.data.body)
+                localStorage.setItem('user', JSON.stringify(res.data.body))
+                localStorage.setItem('token', res.data.body.token)
+                setIsAuth(true)
+                setStatus('success')
+                setToken(res.data.body.token)
+            }
+
+        } catch (error) {
+            setIsAuth(false)
+            setStatus('error')
+        }
     };
 
     return {
@@ -25,7 +66,13 @@ export const useUser = () => {
         password,
         setUsername,
         setEmail,
-        setPassword
+        setPassword,
+        isAuth,
+        setIsAuth,
+        status,
+        setStatus,
+        user,
+        token
     }
 
 

@@ -57,3 +57,15 @@ export const login = async (data) => {
 
     }
 }
+
+export const validateSignUp = async (data) => {
+    // data = {username}
+    const foundUser = await prisma.user.findUnique({
+        where: { username: data.username }
+    })
+
+    if (foundUser?.username) {
+        return { message: 'error', description: 'this username is already taken' }
+    }
+    return { message: 'success', description: '' }
+}

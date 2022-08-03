@@ -1,26 +1,47 @@
-import { Box, Typography, TextField, Button, FormControl } from "@mui/material";
+import { Box, Typography, TextField, Button, CircularProgress, Alert } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../client/context/UserContext";
+
 
 const Signup = () => {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const { handleSignUp, username, setUsername, email, setEmail, password, setPassword, status } = useContext(UserContext)
 
-    const handleSignUp = async (e) => {
-        e.preventDefault();
-        const res = await axios.post("/api/user/sign-up", { username, email, password });
+    const [isUsernameTaken, setIsUsernameTaken] = useState(false)
+    const [passwordShort, setPasswordShort] = useState(false)
 
-        console.log(res.data);
-    };
+    const checkUsername = async () => {
+        if (username.length > 0) {
+            const { data } = await axios.post('/api/user/validate', { username })
+
+            if (data.message === 'error') {
+                setIsUsernameTaken(true)
+            } else {
+                setIsUsernameTaken(false)
+            }
+        }
+    }
+    useEffect(() => {
+        checkUsername()
+    }, [username])
+
+    useEffect(() => {
+        if (password.length > 0 && password.length < 6) {
+            setPasswordShort(true)
+        } else {
+            setPasswordShort(false)
+        }
+    }, [password])
     return (
         <>
             <Box
                 sx={{
-                    marginTop: 8,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
+                    margin: '80px auto',
+                    width: '400px',
+                    textAlign: 'center'
                 }}
             >
                 <Typography component="h1" variant="h5">
@@ -38,7 +59,7 @@ const Signup = () => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-
+                    {isUsernameTaken ? <Alert severity="error">This username is already taken</Alert> : ""}
                     <TextField
                         margin="normal"
                         required
@@ -61,9 +82,10 @@ const Signup = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    {passwordShort ? <Alert severity="error">Password has to be at least 6 characters</Alert> : ""}
 
-                    <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        Sign Up
+                    <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={isUsernameTaken}>
+                        {status === 'loading' ? <CircularProgress sx={{ color: 'white' }} /> : "Sign Up"}
                     </Button>
                 </Box>
             </Box>

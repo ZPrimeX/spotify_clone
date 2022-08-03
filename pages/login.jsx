@@ -1,15 +1,10 @@
-import { Box, Typography, TextField, Button } from "@mui/material";
-import axios from "axios";
-import React, { useState } from "react";
+import { Box, Typography, TextField, Button, CircularProgress } from "@mui/material";
+import React, { useContext } from "react";
+import { UserContext } from "../client/context/UserContext";
+
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        const res = await axios.post("/api/user/login", { email, password });
-    };
+    const { email, setEmail, password, setPassword, handleLogin, status } = useContext(UserContext)
     return (
         <>
             <Box
@@ -47,7 +42,7 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        Log in
+                        {status === 'loading' ? <CircularProgress sx={{ color: 'white' }} /> : "Log in"}
                     </Button>
                 </Box>
             </Box>
