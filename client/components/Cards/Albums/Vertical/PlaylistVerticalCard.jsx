@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Card,
     Link,
@@ -10,12 +10,14 @@ import {
 } from '@mui/material';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import NextLink from 'next/link';
+import { UserContext } from '../../../../context/UserContext';
 
 
 const PlaylistVerticalCard = ({ img, title, isActive }) => {
     const [showBtn, setShowBtn] = useState(false)
+    const { isAuth } = useContext(UserContext)
     return (
-        <Link component={NextLink} href="/playlist" underline="none">
+        <Link component={NextLink} href={isAuth === true ? "/playlist" : "/login"} underline="none">
             <Card sx={{ width: 190, maxHeight: 275 }}
                 onMouseOver={() => setShowBtn(true)}
                 onMouseLeave={() => setShowBtn(false)}>

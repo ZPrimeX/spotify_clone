@@ -1,7 +1,7 @@
-import { Box, Typography, TextField, Button, CircularProgress } from "@mui/material";
+import { Box, Typography, TextField, Button, CircularProgress, Link } from "@mui/material";
 import React, { useContext } from "react";
 import { UserContext } from "../client/context/UserContext";
-
+import NextLink from 'next/link';
 
 const Login = () => {
     const { email, setEmail, password, setPassword, handleLogin, status } = useContext(UserContext)
@@ -44,6 +44,18 @@ const Login = () => {
                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                         {status === 'loading' ? <CircularProgress sx={{ color: 'white' }} /> : "Log in"}
                     </Button>
+                    <hr />
+                    <Box sx={{
+                        marginTop: 2,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}>
+                        <Typography component="h1" variant="h5">Don't have an account?</Typography>
+                        <Link component={NextLink} href='/signup'>
+                            <Button variant="contained" color={'whitebutton'} sx={{ mt: 3, borderRadius: '50px', color: 'black' }}>Sign up</Button>
+                        </Link>
+                    </Box>
                 </Box>
             </Box>
         </>

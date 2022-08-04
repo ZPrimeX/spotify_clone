@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
     Link,
     Box,
@@ -7,11 +7,15 @@ import {
     IconButton,
 } from '@mui/material'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import NextLink from 'next/link'
+import { UserContext } from '../../../../context/UserContext';
+
 
 const PlaylistHorizontalCard = ({ img, title, isActive }) => {
     const [showBtn, setShowBtn] = useState(false)
+    const { isAuth } = useContext(UserContext)
     return (
-        <Link href="#" underline="none">
+        <Link component={NextLink} href={isAuth === true ? "/playlist" : "/login"} underline="none">
             <Box
                 width={'90%'}
                 height={'75px'}

@@ -1,8 +1,8 @@
-import { Box, Typography, TextField, Button, CircularProgress, Alert } from "@mui/material";
+import { Box, Typography, TextField, Button, CircularProgress, Alert, Link } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../client/context/UserContext";
-
+import NextLink from 'next/link'
 
 const Signup = () => {
     const { handleSignUp, username, setUsername, email, setEmail, password, setPassword, status } = useContext(UserContext)
@@ -87,6 +87,18 @@ const Signup = () => {
                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={isUsernameTaken}>
                         {status === 'loading' ? <CircularProgress sx={{ color: 'white' }} /> : "Sign Up"}
                     </Button>
+                    <hr />
+                    <Box sx={{
+                        marginTop: 2,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}>
+                        <Typography component="h1" variant="h5">Already have an account?</Typography>
+                        <Link component={NextLink} href='/login'>
+                            <Button variant="contained" color={'whitebutton'} sx={{ mt: 3, borderRadius: '50px', color: 'black' }}>Log in</Button>
+                        </Link>
+                    </Box>
                 </Box>
             </Box>
         </>

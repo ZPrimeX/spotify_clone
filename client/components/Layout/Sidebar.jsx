@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
@@ -13,10 +13,12 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import LayersIcon from '@mui/icons-material/Layers';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link, Stack } from '@mui/material';
-
+import { UserContext } from '../../context/UserContext';
+import NextLink from 'next/link'
 const drawerWidth = 210;
 
 const Sidebar = () => {
+    const { isAuth } = useContext(UserContext)
     return (
         <>
             <CssBaseline />
@@ -33,7 +35,7 @@ const Sidebar = () => {
                 anchor="left"
             >
                 <List>
-                    <Link href='/' underline='none' color={'white'}>
+                    <Link component={NextLink} href='/' underline='none' color={'white'}>
                         <ListItem disablePadding>
 
                             <ListItemButton>
@@ -44,7 +46,7 @@ const Sidebar = () => {
                             </ListItemButton>
                         </ListItem>
                     </Link>
-                    <Link href='/search' underline='none' color={'white'}>
+                    <Link component={NextLink} href='/search' underline='none' color={'white'}>
                         <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
@@ -54,16 +56,18 @@ const Sidebar = () => {
                             </ListItemButton>
                         </ListItem>
                     </Link>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <LayersIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'Your library'} />
-                        </ListItemButton>
-                    </ListItem>
+                    <Link component={NextLink} href={isAuth === true ? "/playlist" : "/login"}>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <LayersIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={'Your library'} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
                     <Stack mt={'30px'}>
-                        <Link href='/create_playlist' underline='none' color={'white'}>
+                        <Link component={NextLink} href={isAuth === true ? "/create_playlist" : "/login"} underline='none' color={'white'}>
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>
@@ -73,14 +77,16 @@ const Sidebar = () => {
                                 </ListItemButton>
                             </ListItem>
                         </Link>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <FavoriteIcon />
-                                </ListItemIcon>
-                                <ListItemText primary={'Liked Songs'} />
-                            </ListItemButton>
-                        </ListItem>
+                        <Link component={NextLink} href={isAuth === true ? "/liked_songs" : "/login"}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <FavoriteIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary={'Liked Songs'} />
+                                </ListItemButton>
+                            </ListItem>
+                        </Link>
                     </Stack>
                 </List>
                 <Divider />

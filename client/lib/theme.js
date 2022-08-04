@@ -8,6 +8,9 @@ const theme = createTheme({
         primary: {
             main: '#1ddf64',
         },
+        whitebutton: {
+            main: '#fff'
+        },
         secondary: {
             main: '#181818',
         },

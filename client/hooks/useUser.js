@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 
 export const useUser = () => {
@@ -10,11 +11,33 @@ export const useUser = () => {
     const [status, setStatus] = useState('idle')
     const [user, setUser] = useState()
     const [token, setToken] = useState("")
+    const router = useRouter()
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('user')))
         setToken(localStorage.getItem('token') || undefined)
     }, [])
+
+    const handleUpdate = async (e) => {
+        e.preventDefault()
+        try {
+            setStatus('loading')
+            const res = await axios.post('/api/user/validate', { username, email, password })
+
+            if (res.data.message === 'success') {
+                setUser(res.data.body)
+                localStorage.setItem('user', JSON.stringify(res.data.body))
+                localStorage.setItem('token', res.data.body.token)
+                setIsAuth(true)
+                setStatus('success')
+                setToken(res.data.body.token)
+                router.push('/profile')
+            }
+        } catch (error) {
+            setIsAuth(false)
+            setStatus('error')
+        }
+    }
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -29,6 +52,7 @@ export const useUser = () => {
                 setIsAuth(true)
                 setStatus('success')
                 setToken(res.data.body.token)
+                router.push('/')
             }
 
         } catch (error) {
@@ -50,8 +74,8 @@ export const useUser = () => {
                 setIsAuth(true)
                 setStatus('success')
                 setToken(res.data.body.token)
+                router.push('/')
             }
-
         } catch (error) {
             setIsAuth(false)
             setStatus('error')
