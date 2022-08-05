@@ -12,17 +12,16 @@ datasource db {
 
 // user
 model User {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  username    String     @unique
-  email       String     @unique
-  first_name  String?
-  password    String
-  second_name String?
-  is_staff    Boolean    @default(false)
-  date_birth  String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  Playlist    Playlist[]
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  username   String     @unique
+  email      String     @unique
+  password   String
+  is_staff   Boolean    @default(false)
+  date_birth String?
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  avatar     String?
+  Playlist   Playlist[]
 
   @@unique([id, username])
 }

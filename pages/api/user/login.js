@@ -5,7 +5,7 @@ import { apiHandler } from "../../../server/helpers/api-handler";
 export default apiHandler(handler)
 
 async function handler(req, res) {
-    if (req.method === 'GET') {
+    if (req.method !== 'POST') {
         res.status(404).json({ message: 'url not found' })
     }
     if (Object.keys(req.body).length === 0) {
@@ -25,5 +25,5 @@ async function handler(req, res) {
     }
 
 
-    res.status(201).json({ message: 'success', body: result })
+    res.status(201).json({ message: 'success', body: result.data })
 }

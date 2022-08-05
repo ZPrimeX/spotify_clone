@@ -9,7 +9,7 @@ export const useUser = () => {
     const [password, setPassword] = useState("");
     const [isAuth, setIsAuth] = useState(false)
     const [status, setStatus] = useState('idle')
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({})
     const [token, setToken] = useState("")
     const router = useRouter()
 
@@ -82,6 +82,34 @@ export const useUser = () => {
         }
     };
 
+    const handleLogOut = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+    }
+
+    const fetchUserData = async (token) => {
+        try {
+            setStatus("loading");
+
+            const res = await axios.get("/api/user/profile", {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+
+            if (res.data.message === "success") {
+                setUser(res.data.body);
+                localStorage.setItem("user", JSON.stringify(res.data.body));
+                setIsAuth(true);
+                setStatus("success");
+                router.push("/");
+            }
+        } catch (error) {
+            setIsAuth(false);
+            setStatus("error");
+        }
+    };
+
     return {
         handleLogin,
         handleSignUp,
@@ -96,7 +124,9 @@ export const useUser = () => {
         status,
         setStatus,
         user,
-        token
+        token,
+        fetchUserData,
+        handleLogOut
     }
 
 

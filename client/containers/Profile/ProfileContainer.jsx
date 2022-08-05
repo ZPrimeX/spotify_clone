@@ -1,9 +1,11 @@
 import { Avatar, Box, Typography, IconButton } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import HorizontalColumn from '../../components/Cards/Albums/Horizontal/HorizontalColumn'
 import Topbar from '../../components/Layout/Topbar'
+import { UserContext } from '../../context/UserContext'
 
 const ProfileContainer = () => {
+    const { username, } = useContext(UserContext)
     return (
         <>
             <Topbar />

@@ -1,12 +1,23 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { useUser } from '../hooks/useUser'
+import { Box } from '@mui/material'
+
 
 export const UserContext = createContext({ username: '', email: '', password: '', isAuth: false, status: 'idle' })
 const UserProvider = (props) => {
-    const { username, handleSignUp, handleLogin, email, password, setUsername, setEmail, setPassword, token, user, isAuth, status } = useUser()
+    const { username, handleSignUp, handleLogin, email, password, setUsername, setEmail, setPassword, handleLogOut, token, user, isAuth, status, fetchUserData } = useUser()
+
+    useEffect(() => {
+        // if we lost user state
+        const token = localStorage.getItem('token')
+        if (Object.keys(user).length === 0 && token) {
+            fetchUserData(token)
+        }
+    }, [])
+
     return (
         <UserContext.Provider value={{ username, handleLogin, handleSignUp, email, password, setEmail, setUsername, setPassword, token, user, status, isAuth }}>
-            {props.children}
+            {status === 'loading' ? <Box /> : props.children}
         </UserContext.Provider>
     )
 }

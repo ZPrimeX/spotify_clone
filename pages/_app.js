@@ -10,6 +10,8 @@ import UserProvider from '../client/context/UserContext';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
+import '../styles/global.css'
+
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 

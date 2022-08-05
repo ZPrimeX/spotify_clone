@@ -49,7 +49,7 @@ export const login = async (data) => {
 
     // send back user data with token
     return {
-        body: {
+        data: {
             ...user,
             password: null,
             token
