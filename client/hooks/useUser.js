@@ -11,6 +11,7 @@ export const useUser = () => {
     const [status, setStatus] = useState('idle')
     const [user, setUser] = useState({})
     const [token, setToken] = useState("")
+    const [avatar, setAvatar] = useState("")
     const router = useRouter()
 
     useEffect(() => {
@@ -22,15 +23,13 @@ export const useUser = () => {
         e.preventDefault()
         try {
             setStatus('loading')
-            const res = await axios.post('/api/user/validate', { username, email, password })
+            const res = await axios.patch('/api/user/profile', { username, email, password, avatar }, { headers: { authorization: `Bearer ${token}` } })
 
             if (res.data.message === 'success') {
                 setUser(res.data.body)
                 localStorage.setItem('user', JSON.stringify(res.data.body))
-                localStorage.setItem('token', res.data.body.token)
                 setIsAuth(true)
                 setStatus('success')
-                setToken(res.data.body.token)
                 router.push('/profile')
             }
         } catch (error) {
@@ -126,7 +125,9 @@ export const useUser = () => {
         user,
         token,
         fetchUserData,
-        handleLogOut
+        handleLogOut,
+        avatar,
+        setAvatar
     }
 
 

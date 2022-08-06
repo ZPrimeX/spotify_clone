@@ -61,13 +61,16 @@ const Topbar = () => {
                         horizontal: 'right',
                     }}
                     sx={{ mt: 1 }}
-                >
-                        <ListItemButton component="a" href="#" sx={{ width: 190 }}>
-                            <ListItemText primary="Account" />
-                        </ListItemButton>
-                        <ListItemButton component="a" href="/profile">
-                            <ListItemText primary="Profile" />
-                        </ListItemButton>
+                >       <Link component={NextLink} href='/account'>
+                            <ListItemButton component="a" sx={{ width: 190 }}>
+                                <ListItemText primary="Account" />
+                            </ListItemButton>
+                        </Link>
+                        <Link component={NextLink} href='/profile'>
+                            <ListItemButton component="a">
+                                <ListItemText primary="Profile" />
+                            </ListItemButton>
+                        </Link>
                         <ListItemButton component="a" href="#">
                             <ListItemText primary="Log out" />
                         </ListItemButton>
