@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 
 export const UserContext = createContext({ username: '', email: '', password: '', avatar: '', isAuth: false, status: 'idle' })
 const UserProvider = (props) => {
-    const { avatar, setAvatar, username, handleSignUp, handleLogin, email, password, setUsername, setEmail, setPassword, handleLogOut, token, user, isAuth, status, fetchUserData } = useUser()
+    const { handleUpdate, avatar, setAvatar, username, handleSignUp, handleLogin, email, password, setUsername, setEmail, setPassword, handleLogOut, token, user, isAuth, status, fetchUserData } = useUser()
 
     useEffect(() => {
         // if we lost user state
@@ -16,7 +16,7 @@ const UserProvider = (props) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ avatar, setAvatar, username, handleLogin, handleSignUp, email, password, setEmail, setUsername, setPassword, token, user, status, isAuth }}>
+        <UserContext.Provider value={{ handleUpdate, avatar, setAvatar, username, handleLogin, handleSignUp, email, password, setEmail, setUsername, setPassword, token, user, status, isAuth }}>
             {status === 'loading' ? <Box /> : props.children}
         </UserContext.Provider>
     )

@@ -19,11 +19,9 @@ export const useUser = () => {
         setToken(localStorage.getItem('token') || undefined)
     }, [])
 
-    const handleUpdate = async (e) => {
-        e.preventDefault()
+    const handleUpdate = async (payload) => {
         try {
-            setStatus('loading')
-            const res = await axios.patch('/api/user/profile', { username, email, password, avatar }, { headers: { authorization: `Bearer ${token}` } })
+            const res = await axios.patch('/api/user/profile', payload, { headers: { authorization: `Bearer ${token}` } })
 
             if (res.data.message === 'success') {
                 setUser(res.data.body)
@@ -101,7 +99,8 @@ export const useUser = () => {
                 localStorage.setItem("user", JSON.stringify(res.data.body));
                 setIsAuth(true);
                 setStatus("success");
-                router.push("/");
+                setUsername(res.data.body.username)
+                setEmail(res.data.body.email)
             }
         } catch (error) {
             setIsAuth(false);
@@ -127,7 +126,8 @@ export const useUser = () => {
         fetchUserData,
         handleLogOut,
         avatar,
-        setAvatar
+        setAvatar,
+        handleUpdate
     }
 
 
