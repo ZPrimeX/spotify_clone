@@ -1,10 +1,7 @@
 import { apiHandler } from "../../../server/helpers/api-handler";
 import prisma from "../../../server/lib/prisma";
-import jwt from 'jsonwebtoken'
-import getConfig from 'next/config'
+import { getUser } from "../../../server/helpers/get-user";
 
-
-const { serverRuntimeConfig } = getConfig()
 
 export default apiHandler(handler)
 
@@ -13,20 +10,16 @@ async function handler(req, res) {
     const decoded = jwt.verify(token, serverRuntimeConfig.secret)
     switch (req.method) {
         case 'GET':
-            const foundUser = await prisma.user.findUnique({
-                where: {
-                    id: decoded.id,
-                },
-            })
+            const { user } = await getUser(req)
 
-            if (!foundUser) {
+            if (!user) {
                 return res.status(401).json({ message: 'error', description: 'user not found' })
             }
 
             return res.status(200).json({ message: 'success', body: { ...foundUser, password: null } })
         case 'PATCH':
             const updatedUser = await prisma.user.update({
-                where: { id: decoded.id },
+                where: { id: user.id },
                 data: { ...req.body }
             })
 

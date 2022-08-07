@@ -1,58 +1,36 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
-import { Link } from '@mui/material';
-import NextLink from 'next/link'
+import { Box, Button, Typography } from '@mui/material'
+import React, { useContext } from 'react'
+import { UserContext } from '../../context/UserContext';
+import Sidebar from '../../components/Layout/Sidebar'
+import Topbar from '../../components/Layout/Topbar';
+import UpdateAccountModal from './UpdateAccountModal';
 
-
-const drawerWidth = 220;
 const AccountContainer = () => {
+    const { user } = useContext(UserContext)
     return (
         <>
-            <CssBaseline />
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        boxSizing: 'border-box',
-                    },
-                }}
-                variant="permanent"
-                anchor="left"
-            >
-                <List>
-                    <Link component={NextLink} href='/account' underline='none' color={'white'}>
-                        <ListItem disablePadding>
-
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <HomeIcon />
-                                </ListItemIcon>
-                                <ListItemText primary={'Account overview'} />
-                            </ListItemButton>
-                        </ListItem>
-                    </Link>
-                </List>
-            </Drawer>
-            <Box padding={10} display='flex' flexDirection={'column'}>
-                <Typography variant='h3'>Account Overview</Typography>
-                <Typography variant='h5' mt={2}>Profile</Typography>
-                <Box mt={3} display='flex' flexDirection={'column'}>
-                    <Typography>Username</Typography>
-                    <Typography>Email</Typography>
-                    <Typography>Date of birth</Typography>
+            <Sidebar />
+            <Topbar />
+            <Box padding={10} display='flex' flexDirection={'column'} paddingLeft={100}>
+                <Typography variant='h3' fontWeight={700}>Account Overview</Typography>
+                <Box display='flex' flexDirection={'row'} alignItems='center' justifyContent={'space-between'} width='500px'>
+                    <Box mt={5} display='flex' flexDirection={'column'} gap={2}>
+                        <Typography fontWeight={700} fontSize={20}>Username</Typography>
+                        <Typography fontWeight={700} fontSize={20}>Email</Typography>
+                        <Typography fontWeight={700} fontSize={20}>Date of birth</Typography>
+                        <Typography fontWeight={700} fontSize={20}>Country or region</Typography>
+                    </Box>
+                    <Box mt={5} display='flex' flexDirection={'column'} gap={2}>
+                        <Typography fontWeight={500} fontSize={18}>{user.username}</Typography>
+                        <Typography fontWeight={500} fontSize={18}>{user.email}</Typography>
+                        <Typography fontWeight={500} fontSize={18}>to be added</Typography>
+                        <Typography fontWeight={500} fontSize={18}>to be added</Typography>
+                    </Box>
                 </Box>
+                <UpdateAccountModal>
+                    <Button variant='contained' sx={{ width: '150px', mt: 3 }}>Edit profile</Button>
+                </UpdateAccountModal>
             </Box>
-
         </>
     )
 }

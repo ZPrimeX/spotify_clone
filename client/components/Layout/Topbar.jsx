@@ -8,7 +8,7 @@ import NextLink from 'next/link';
 
 
 const Topbar = () => {
-    const { isAuth } = useContext(UserContext)
+    const { isAuth, user } = useContext(UserContext)
     const router = useRouter()
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -44,8 +44,8 @@ const Topbar = () => {
                         <Avatar
                             sx={{ width: 27, height: 27, ml: 0.4, mt: 0.2 }}
                             alt="Avatar"
-                            src="https://images.unsplash.com/photo-1658660854207-8886b1d69bb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" />
-                        <Typography ml={1} color='white'>Username</Typography>
+                            src={user.avatar} />
+                        <Typography ml={1} color='white'>{user.username}</Typography>
                     </Box>
                 </Box><Popover
                     id={id}

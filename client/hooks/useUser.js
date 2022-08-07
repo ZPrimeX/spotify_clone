@@ -26,9 +26,7 @@ export const useUser = () => {
             if (res.data.message === 'success') {
                 setUser(res.data.body)
                 localStorage.setItem('user', JSON.stringify(res.data.body))
-                setIsAuth(true)
                 setStatus('success')
-                router.push('/profile')
             }
         } catch (error) {
             setIsAuth(false)

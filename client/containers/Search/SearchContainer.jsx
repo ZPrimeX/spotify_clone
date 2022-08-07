@@ -9,41 +9,43 @@ const SearchContainer = () => {
     return (
         <>
             <Topbar />
-            <Box mt={5}>
-                <Typography variant='h5'>Your top genres</Typography>
-                <RectangleCard />
-            </Box>
-            <Box mt={5} mb={20}>
-                <Typography variant='h5'>Browse all</Typography>
-                <SquareCardColumn />
-                <SquareCardColumn />
-                <SquareCardColumn />
-                <SquareCardColumn />
-                <SquareCardColumn />
-                <SquareCardColumn />
-                <Grid container rowSpacing={3} ml={1.4}>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
+            <Box padding={5}>
+                <Box mt={5}>
+                    <Typography variant='h5'>Your top genres</Typography>
+                    <RectangleCard />
+                </Box>
+                <Box mt={5} mb={20}>
+                    <Typography variant='h5'>Browse all</Typography>
+                    <SquareCardColumn />
+                    <SquareCardColumn />
+                    <SquareCardColumn />
+                    <SquareCardColumn />
+                    <SquareCardColumn />
+                    <SquareCardColumn />
+                    <Grid container rowSpacing={3} ml={1.4}>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={1.1}>
+                            <SquareCard />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={1.1}>
-                        <SquareCard />
-                    </Grid>
-                </Grid>
+                </Box>
             </Box>
         </>
     )

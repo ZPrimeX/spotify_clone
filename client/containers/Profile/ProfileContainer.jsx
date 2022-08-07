@@ -5,17 +5,17 @@ import { UserContext } from '../../context/UserContext'
 import UpdateProfileModal from './components/UpdateProfileModal'
 
 const ProfileContainer = () => {
-    const { user, username, setUsername } = useContext(UserContext)
+    const { user } = useContext(UserContext)
     return (
         <>
             <Topbar />
             <Box display={'flex'} width='100%' height={'400px'} alignItems={'center'}>
                 <UpdateProfileModal>
-                    <Avatar sx={{ width: '200px', height: '200px', cursor: 'pointer' }} src={user.avatar} />
+                    <Avatar sx={{ width: '200px', height: '200px', cursor: 'pointer' }} src={user?.avatar} />
                 </UpdateProfileModal>
                 <Box display={'flex'} flexDirection='column' ml={4}>
                     <UpdateProfileModal>
-                        <Typography variant='h1' fontWeight={700} sx={{ cursor: 'pointer' }}>{user.username}</Typography>
+                        <Typography variant='h1' fontWeight={700} sx={{ cursor: 'pointer' }}>{user?.username}</Typography>
                     </UpdateProfileModal>
                     <Box display='flex' justifyContent={'space-between'}>
                         <Typography>3 Public Playlists</Typography>

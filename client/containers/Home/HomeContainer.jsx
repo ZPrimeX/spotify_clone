@@ -23,7 +23,7 @@ const HomeContainer = () => {
     return (
         <>
             <Topbar />
-            <Box mt={'50px'} width={'87%'} mb={20}>
+            <Box mt={'50px'} width={'87%'} mb={20} padding={5}>
                 <HorizontalColumn data={playlists} />
                 <VerticalColumn />
                 <VerticalColumn />

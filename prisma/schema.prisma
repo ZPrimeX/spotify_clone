@@ -29,11 +29,11 @@ model User {
 // playlist
 model Playlist {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
+  title       String
   img         String?
-  description String
+  description String?
   tags        String[]
-  owner       User     @relation(fields: [owner_id, owner_name], references: [id, username])
+  owner       User     @relation(fields: [owner_id], references: [id])
   owner_name  String
   owner_id    String
   createdAt   DateTime @default(now())

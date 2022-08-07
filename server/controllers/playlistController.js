@@ -5,9 +5,16 @@ export const findAll = async () => {
     return data
 }
 
-export const create = async () => {
+export const create = async (data, user) => {
+    const playlistDefaultTitle = user.Playlist ? `My Playlist #${user.Playlist.length + 1}` : "My Playlist #1"
+
     const newPlaylist = await prisma.playlist.create({
-        data: data
+        data: {
+            title: playlistDefaultTitle,
+            owner_name: user.username,
+            owner_id: user.id
+        }
     })
-    return newPlaylist
+
+    return 'done'
 }
