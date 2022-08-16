@@ -5,6 +5,14 @@ export const findAll = async () => {
     return data
 }
 
+export const findUnique = async (user) => {
+    const playlists = await prisma.playlist.findMany({
+        where: {
+            owner_id: user.id
+        }
+    })
+    return playlists
+}
 export const create = async (data, user) => {
     const playlistDefaultTitle = user.Playlist ? `My Playlist #${user.Playlist.length + 1}` : "My Playlist #1"
 
