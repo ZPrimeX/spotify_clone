@@ -16,7 +16,7 @@ const UserProvider = (props) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ handleUpdate, avatar, setAvatar, username, handleLogin, handleSignUp, email, password, setEmail, setUsername, setPassword, token, user, status, isAuth }}>
+        <UserContext.Provider value={{ handleLogOut, handleUpdate, avatar, setAvatar, username, handleLogin, handleSignUp, email, password, setEmail, setUsername, setPassword, token, user, status, isAuth }}>
             {status === 'loading' ? <Box /> : props.children}
         </UserContext.Provider>
     )

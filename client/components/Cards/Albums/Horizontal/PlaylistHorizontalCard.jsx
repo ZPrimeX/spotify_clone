@@ -11,11 +11,11 @@ import NextLink from 'next/link'
 import { UserContext } from '../../../../context/UserContext';
 
 
-const PlaylistHorizontalCard = ({ img, title, isActive }) => {
+const PlaylistHorizontalCard = ({ img, title, id }) => {
     const [showBtn, setShowBtn] = useState(false)
     const { isAuth } = useContext(UserContext)
     return (
-        <Link component={NextLink} href={isAuth === true ? "/playlist" : "/login"} underline="none">
+        <Link component={NextLink} href={isAuth === true ? `/playlist/${id}` : "/login"} underline="none">
             <Box
                 width={'90%'}
                 height={'75px'}
@@ -35,7 +35,7 @@ const PlaylistHorizontalCard = ({ img, title, isActive }) => {
             >
                 <Box display={'flex'} alignItems='center' gap={'15px'} height={'100%'}>
                     <Avatar
-                        src={img}
+                        src={'https://source.unsplash.com/random'}
                         variant="rounded"
                         sx={{ width: 80, height: '100%' }}
                     />

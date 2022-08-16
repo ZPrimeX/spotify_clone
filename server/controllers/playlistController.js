@@ -16,5 +16,18 @@ export const create = async (data, user) => {
         }
     })
 
-    return 'done'
+    return newPlaylist
+}
+
+export const findOne = async (playlist_id) => {
+    try {
+        const foundPlaylist = await prisma.playlist.findUnique({
+            where: {
+                id: playlist_id
+            }
+        })
+        return foundPlaylist
+    } catch (error) {
+        return error
+    }
 }

@@ -30,7 +30,7 @@ model User {
 model Playlist {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
-  img         String?
+  img         String   @default("https://source.unsplash.com/random")
   description String?
   tags        String[]
   owner       User     @relation(fields: [owner_id], references: [id])

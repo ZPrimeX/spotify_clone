@@ -8,7 +8,7 @@ import NextLink from 'next/link';
 
 
 const Topbar = () => {
-    const { isAuth, user } = useContext(UserContext)
+    const { isAuth, user, handleLogOut } = useContext(UserContext)
     const router = useRouter()
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -27,8 +27,12 @@ const Topbar = () => {
         <>
             <Box display={'flex'} justifyContent='space-between' pt={2}>
                 <Box display='flex' alignItems={'center'}>
-                    <IconButton><ArrowBackIosNewIcon /></IconButton>
-                    <IconButton><ArrowForwardIosIcon /></IconButton>
+                    <IconButton>
+                        <ArrowBackIosNewIcon />
+                    </IconButton>
+                    <IconButton>
+                        <ArrowForwardIosIcon />
+                    </IconButton>
                     {router.pathname === '/search' ? <Box ml={2}>
                         <input></input>
                     </Box> : ""}
@@ -71,7 +75,7 @@ const Topbar = () => {
                                 <ListItemText primary="Profile" />
                             </ListItemButton>
                         </Link>
-                        <ListItemButton component="a" href="#">
+                        <ListItemButton component="a" onClick={handleLogOut} href='/'>
                             <ListItemText primary="Log out" />
                         </ListItemButton>
                     </Popover></> :

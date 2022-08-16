@@ -15,10 +15,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link, Stack } from '@mui/material';
 import { UserContext } from '../../context/UserContext';
 import NextLink from 'next/link'
+import { usePlaylist } from '../../hooks/usePlaylist';
+import { useRouter } from 'next/router';
 const drawerWidth = 210;
 
 const Sidebar = () => {
     const { isAuth } = useContext(UserContext)
+    const { handleCreate } = usePlaylist()
+    const router = useRouter()
+    const handleRedirect = () => {
+        router.push('/login')
+    }
     return (
         <>
             <CssBaseline />
@@ -67,9 +74,9 @@ const Sidebar = () => {
                         </ListItem>
                     </Link>
                     <Stack mt={'30px'}>
-                        <Link component={NextLink} href={isAuth === true ? "/create_playlist" : "/login"} underline='none' color={'white'}>
+                        <Link underline='none' color={'white'}>
                             <ListItem disablePadding>
-                                <ListItemButton>
+                                <ListItemButton onClick={isAuth === true ? handleCreate : handleRedirect}>
                                     <ListItemIcon>
                                         <PlaylistAddIcon />
                                     </ListItemIcon>

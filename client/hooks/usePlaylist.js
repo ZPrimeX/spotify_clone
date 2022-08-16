@@ -4,23 +4,23 @@ import { useRouter } from "next/router";
 
 export const usePlaylist = () => {
     const [title, setTitle] = useState('')
-    const [ownerName, setOwnerName] = useState('')
-    const [ownerId, setOwnerId] = useState('')
     const [status, setStatus] = useState('idle')
-    const [playlist, setPlaylist] = useState({})
     const router = useRouter()
 
     const handleCreate = async (e) => {
         e.preventDefault()
+        const token = localStorage.getItem('token')
         try {
-            const res = await axios.post("/api/playlist/new", { title, ownerName, ownerId })
+            const res = await axios.post("/api/playlist/new", {}, { headers: { Authorization: 'Bearer ' + token, } })
             if (res.data.message === 'success') {
-                setPlaylist(res.data.body)
                 setStatus('success')
-                router.push('/')
+                router.push(`/playlist/${res.data.body.id}`)
             }
         } catch (error) {
-
+            setStatus('error')
         }
+    }
+    return {
+        handleCreate
     }
 }
