@@ -11,7 +11,8 @@ const HomeContainer = () => {
     const fetchPlaylists = async () => {
         const res = await axios.get('/api/playlist')
         if (res.data.message === 'success') {
-            setPlaylists(res.data.body)
+            const sixPlaylists = res.data.body.slice(0, 6)
+            setPlaylists(sixPlaylists)
         }
     }
 
@@ -23,7 +24,7 @@ const HomeContainer = () => {
     return (
         <>
             <Topbar />
-            <Box mt={'50px'} width={'87%'} mb={20} padding={5}>
+            <Box mt={'50px'} width='87%' mb={20} padding={5}>
                 <HorizontalColumn data={playlists} />
                 <VerticalColumn />
                 <VerticalColumn />
