@@ -15,7 +15,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link, Stack } from '@mui/material';
 import { UserContext } from '../../context/UserContext';
 import NextLink from 'next/link'
-import { usePlaylist } from '../../hooks/usePlaylist';
+import { usePlaylist } from '../../../client/core/hooks/usePlaylist'
 import { useRouter } from 'next/router';
 const drawerWidth = 210;
 

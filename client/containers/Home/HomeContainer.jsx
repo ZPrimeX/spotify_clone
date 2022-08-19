@@ -13,8 +13,7 @@ const HomeContainer = () => {
 
     useEffect(() => {
         if (playlistStatus !== 'loading' && playlistStatus !== 'success' && playlistData.length === 0) {
-            const token = localStorage.getItem('token')
-            dispatch(fetchUserPlaylists(token))
+            dispatch(fetchUserPlaylists())
         }
     }, [])
 

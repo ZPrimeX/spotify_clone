@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { req } from "../../core/utils/Axios";
 
-export const fetchUserPlaylists = createAsyncThunk("playlist/fetchUserPlaylists", async (token) => {
-    const res = await axios.get('/api/playlist/user-playlist', { headers: { Authorization: `Bearer ` + token } })
+
+export const fetchUserPlaylists = createAsyncThunk("playlist/fetchUserPlaylists", async () => {
+    const res = await req.get('/playlist/user-playlist')
     return res.data
 })
 

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect } from 'react'
-import { useUser } from '../hooks/useUser'
+import { useUser } from '../core/hooks/useUser'
 import { Box } from '@mui/material'
 
 

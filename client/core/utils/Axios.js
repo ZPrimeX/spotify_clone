@@ -15,5 +15,4 @@ req.interceptors.request.use((config) => {
         return config
     }
     return config
-}
-)
+})
