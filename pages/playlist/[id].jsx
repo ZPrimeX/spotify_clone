@@ -21,7 +21,7 @@ const SinglePlaylist = ({ playlist }) => {
 export const getServerSideProps = async (context) => {
     const { id } = context.params
 
-    const { data } = await axios.get(`http://localhost:3000/api/playlist/${id}`)
+    const { data } = await axios.get(`https://spotify-clone-zprimex.vercel.app/api/playlist/${id}`)
 
     return { props: { playlist: data.body } }
 }

@@ -1,7 +1,7 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "no-unescaped-entities": false,
-    "exhaustive-deps": false
+    "no-unescaped-entities": "off",
+    "exhaustive-deps": "off"
   }
 }
