@@ -9,6 +9,7 @@ import createEmotionCache from '../client/core/lib/createEmotionCache';
 import UserProvider from '../client/context/UserContext';
 import { Provider as ReduxProvider } from 'react-redux';
 import { store } from '../client/redux/store';
+import { SnackbarProvider } from 'notistack';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -21,6 +22,7 @@ export default function MyApp(props) {
     <ReduxProvider store={store}>
       <UserProvider>
         <CacheProvider value={emotionCache}>
+          <SnackbarProvider maxSnack={3}>
           <Head>
             <meta name="viewport" content="initial-scale=1, width=device-width" />
           </Head>
@@ -29,6 +31,7 @@ export default function MyApp(props) {
             <CssBaseline />
             <Component {...pageProps} />
           </ThemeProvider>
+          </SnackbarProvider>
         </CacheProvider>
       </UserProvider>
     </ReduxProvider>

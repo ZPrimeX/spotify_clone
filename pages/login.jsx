@@ -44,6 +44,9 @@ const Login = () => {
                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                         {status === 'loading' ? <CircularProgress sx={{ color: 'white' }} /> : "Log in"}
                     </Button>
+                    <Link component={NextLink} href='/forgot-password'>
+                        <Typography sx={{cursor: 'pointer'}}>Forgot password?</Typography>
+                    </Link>
                     <hr />
                     <Box sx={{
                         marginTop: 2,
