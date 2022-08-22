@@ -1,6 +1,6 @@
 import { forgotPassword } from "../../../server/controllers/userController";
 import { apiHandler } from "../../../server/helpers/api-handler";
-
+import sgMail from '@sendgrid/mail'
 
 export default apiHandler(handler)
 
