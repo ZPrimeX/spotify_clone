@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   serverRuntimeConfig: {
     secret: process.env.JWT_SECRET,
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

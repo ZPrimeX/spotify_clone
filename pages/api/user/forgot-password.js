@@ -11,7 +11,7 @@ const msg = (userEmail, token) => {
   from: 'shahmansurov1001@gmail.com', // Change to your verified sender
   subject: `Reset password`,
   text: 'You have requested to reset your password for Spotify_Clone.',
-  html: `<div><p>To change your password </p><a href="https://spotify-clone-zprimex.vercel.app/reset-password?token=${token}}">click this link</a></div>`,
+  html: `<div><p>To change your password </p><a href="http://localhost:3000/reset-password?token=${token}">click this link</a></div>`,
 }
 }
 

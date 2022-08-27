@@ -83,3 +83,16 @@ export const forgotPassword = async (email) => {
 
     return {message: 'success', user, token}
 }
+
+export const resetPassword = async (password, email) => {
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds)
+        const user = await prisma.user.update({
+        where: {email: email}, 
+        data: {password: hashedPassword}
+    })
+    return {message: 'success', user}
+    } catch (error) {
+        console.log(error);
+    }
+}
