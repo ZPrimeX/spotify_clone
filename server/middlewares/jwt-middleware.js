@@ -15,6 +15,7 @@ function jwtMiddleware(req, res) {
       "/api/user/validate",
       `/api/playlist/${req.query.id}`,
       "/api/user/forgot-password",
+      "/api/user/verify-email",
     ],
   });
   return util.promisify(middleware)(req, res);

@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   serverRuntimeConfig: {
     secret: process.env.JWT_SECRET,
+    base_api: process.env.BASE_API,
   },
 };
 
