@@ -1,18 +1,10 @@
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  CircularProgress,
-  Link,
-} from "@mui/material";
+import { Box, Typography, TextField, Button, CircularProgress, Link } from "@mui/material";
 import React, { useContext } from "react";
 import { UserContext } from "../client/context/UserContext";
 import NextLink from "next/link";
 
 const Login = () => {
-  const { email, setEmail, password, setPassword, handleLogin, status } =
-    useContext(UserContext);
+  const { email, setEmail, password, setPassword, handleLogin, status } = useContext(UserContext);
   return (
     <>
       <Box
@@ -49,17 +41,8 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            {status === "loading" ? (
-              <CircularProgress sx={{ color: "white" }} />
-            ) : (
-              "Log in"
-            )}
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            {status === "loading" ? <CircularProgress sx={{ color: "white" }} /> : "Log in"}
           </Button>
           <Link component={NextLink} href="/forgot-password">
             <Typography sx={{ cursor: "pointer" }}>Forgot password?</Typography>
@@ -77,14 +60,12 @@ const Login = () => {
               Don't have an account?
             </Typography>
             <Link component={NextLink} href="/signup">
-              <Button
-                variant="contained"
-                color={"whitebutton"}
-                sx={{ mt: 3, borderRadius: "50px", color: "black" }}
-              >
+              <Button variant="contained" color={"whitebutton"} sx={{ mt: 3, borderRadius: "50px", color: "black" }}>
                 Sign up
               </Button>
             </Link>
+
+            <a href="/api/user/spotify-auth">sign in with spotify</a>
           </Box>
         </Box>
       </Box>
