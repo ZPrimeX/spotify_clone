@@ -1,6 +1,7 @@
-import { apiHandler } from "../../../server/helpers/api-handler";
+import { apiHandler } from "../../../../server/helpers/api-handler";
 import cookieParser from "cookie-parser";
 import querystring from "querystring";
+import { setCookie } from "cookies-next";
 
 import { serialize } from "cookie";
 
@@ -22,8 +23,9 @@ var generateRandomString = function (length) {
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    const state = generateRandomString();
-    res.setHeader("set-cookie", serialize(stateKey, state));
+    const state = generateRandomString(16);
+    setCookie(stateKey, state, { req, res, maxAge: 60 * 60 * 24, path: "/" });
+
     const scope = "user-read-private user-read-email";
     res.redirect(
       "https://accounts.spotify.com/authorize?" +
