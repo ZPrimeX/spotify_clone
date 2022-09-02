@@ -5,9 +5,9 @@ import querystring from "querystring";
 import { serialize } from "cookie";
 import axios from "axios";
 
-const CLIENT_ID = "947aecbe26774ef2bdfbde344604d7c3";
-const CLIENT_SECRET = "76e031ea166243c3b062cf4bede8368f";
-const REDIRECT_URL = "http://localhost:3000/";
+const CLIENT_ID = "";
+const CLIENT_SECRET = "";
+const REDIRECT_URL = "";
 import request from "request";
 import { getCookies } from "cookies-next";
 
